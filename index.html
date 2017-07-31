@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Counter Calculation Sheet</title>
+	<link rel="stylesheet" href="styles.css">
+	<script src="jquery-2.2.3.js"></script> 
+
+  <script type="text/javascript" src="jspdf.min.js"></script>
+  <script src="jspdf.plugin.autotable.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Cousine' rel='stylesheet' type='text/css'>
+
+</head>
+
+
+<body>
+
+<div id="navbar">
+  <img class="nav" src="sprites/logo.svg" width="60px">  
+</div> <!-- End Nav Bar -->
+
+<div class="container dk-gray">
+  <form class="nav">
+    <p> Store: </p> 
+    <input type="text" id="storenumberinput">
+    <p> City: </p> 
+    <input type="text" id="cityinput">
+    <p>  Project Manager: </p> 
+    <select class="dropdown" id="manager">
+    <option value="" selected="selected">Select</option>
+
+    <option value="Mike Cisneros">Mike Cisneros</option>
+    <option value="Dino DeLaurentiis">Dino DeLaurentiis</option>
+    <option value="Chris Geraci">Chris Geraci</option>
+    <option value="Angie Gomez">Angie Gomez</option>
+    <option value="Terry McGregor">Terry McGregor</option>
+    <option value="Andrew Peterson">Andrew Peterson</option>
+    <option value="John Burns">John Burns</option>
+    <option value="Dave Oberdorfer">Dave Oberdorfer</option>
+    </select>
+  </form>
+</div> <!-- End Container -->
+
+
+<div class="container gray-bottom-border">
+
+  <div class="calculationarea"> 
+
+     <div class="choices"> 
+       <div class="togglebtn choice"> 
+        <form class="form">
+            <div class="switch-field wide" id="height-switch">
+              <div class="switch-title">Counter Height:</div>
+              <input type="radio" id="height-low" name="switch_2" value="yes" checked/>
+              <label for="height-low">Standard 33"</label>
+              <input type="radio" id="height-high" name="switch_2" value="no" />
+              <label for="height-high">High 42"</label>
+            </div>
+        </form>
+       </div>
+       <div class="togglebtn choice"> 
+        <form class="form">
+            <div class="switch-field" id="lr-switch">
+              <div class="switch-title">Style:</div>
+              <input type="radio" id="lr-left" name="switch_2" value="yes"/>
+              <label for="lr-left">Left</label>
+              <input type="radio" id="lr-right" name="switch_2" value="no" checked/>
+              <label for="lr-right">Right</label>
+            </div>
+        </form>
+       </div>
+      <div class="togglebtn choice"> 
+        <form class="form">
+            <div class="switch-field" id="ds15-switch">
+              <div class="switch-title">2015 Design Studio:</div>
+              <input type="radio" id="ds15-no" name="switch_2" value="yes" checked/>
+              <label for="ds15-no">No</label>
+              <input type="radio" id="ds15-yes" name="switch_2" value="no" />
+              <label for="ds15-yes">Yes</label>
+            </div>
+        </form>
+       </div>
+      <div class="togglebtn choice"> 
+        <form class="form">
+            <div class="switch-field" id="return-switch">
+              <div class="switch-title">Return Counter:</div>
+              <input type="radio" id="return-5" name="switch_2" value="yes" checked/>
+              <label for="return-5">5ft</label>
+              <input type="radio" id="return-4" name="switch_2" value="no" />
+              <label for="return-4">4ft</label>
+            </div>
+        </form>
+       </div>
+      </div> <!-- End Choices -->
+
+    <span><label>Counter <br> Length</label><input type="text"  class="input counterlength" value="0"></span>
+    <p class="symbol">-</p>
+    <span><label>Standard <br> Counter Set</label><input type="text" class="input" disabled="disabled" id="standardcounterset" value="25"></span>
+    <p class="symbol">=</p>
+    <span><label>Cash &amp; Gaps</label><input type="text" class="cashandgaps" disabled="disabled" ></span>
+    <p class="symbol">-</p>
+    <span class="repeat"><label>Cash Repeat <br> Area</label><input type="text" class="totalfeet" disabled="disabled" value="0"></span>
+    <p class="symbol">=</p>
+    <span><label>Total Gap</label><input type="text" class="totalgap" disabled="disabled" value="0"></span>
+    <p class="symbol">-</p>
+
+    <span><label>Gap Counter</label><input type="text" class="input endgapcounter" disabled="disabled" value="0"><br>
+      <select class="dropdown" id="endgapcounter_dropdown">
+        <option value="0" disabled="disabled" selected="selected">Select</option>
+        <option value="0">None</option>    
+        <option value="4">4 ft</option>
+        <option value="5">5 ft</option>
+        <option value="6">6 ft</option>
+        <option value="7">7 ft</option>
+        <option value="8">8 ft</option>  
+        <option value="9">9 ft</option>
+        <option value="10">10 ft</option>
+        <option value="11">11 ft</option>
+        <option value="12">12 ft</option>
+        <option value="13">13 ft</option>
+        <option value="14">14 ft</option>
+        <option value="15">15 ft</option>
+        <option value="16">16 ft</option>                                             
+      </select>
+    </span>
+
+    <p class="symbol">-</p>
+
+    <span><label>4ft Balloon <br> Counter Ext.</label><input type="text" class="input bcextension" disabled="disabled" value="0"><br>
+      <div class="togglebtn yn-button"> 
+        <form class="form">
+          <div class="switch-field yn-button" id="bcextension-switch">
+            <input type="radio" id="bcext-no" name="switch_2" value="no" checked/>
+            <label for="bcext-no">No</label>
+            <input type="radio" id="bcext-yes" name="switch_2" value="yes" />
+            <label for="bcext-yes">Yes</label>
+          </div>
+        </form>
+       </div>
+    </span>
+
+    <span class="remove">   
+        <p class="symbol">-</p>
+    </span>
+
+    <span class="remove"><label>4ft Balloon <br>  Service Ext.</label><input type="text" class="input bsextension" disabled="disabled" value="0"><br>
+       <div class="togglebtn yn-button"> 
+        <form class="form">
+          <div class="switch-field yn-button" id="bsextension-switch">
+            <input type="radio" id="bsext-no" name="switch_2" value="no" checked/>
+            <label for="bsext-no">No</label>
+            <input type="radio" id="bsext-yes" name="switch_2" value="yes" />
+            <label for="bsext-yes">Yes</label>
+          </div>
+        </form>
+       </div>
+    </span>
+    <span class="remove">   
+        <p class="symbol">-</p>
+    </span> 
+    <span class="remove"><label>8ft Studio <br> Service</label><input type="text" class="input designstudio" disabled="disabled" value="0"><br>
+       <div class="togglebtn yn-button"> 
+        <form class="form">
+          <div class="switch-field yn-button" id="dstud-switch">
+            <input type="radio" id="dstud-no" name="switch_2" value="no" checked/>
+            <label for="dstud-no">No</label>
+            <input type="radio" id="dstud-yes" name="switch_2" value="yes" />
+            <label for="dstud-yes">Yes</label>
+          </div>
+        </form>
+       </div>
+    </span>
+
+    <p class="symbol">=</p>
+
+    <span><label>Must Total<br> Zero</label><input type="text" class="totalzero alert" disabled="disabled" ></span>
+
+  </div> <!-- end calculationarea-->
+
+  <div class="registerarea arrow_box">
+  	<span><label>Actual <br> Registers</label><input type="text" class="input actualregisters" value="0"></span>
+    <p class="symbol">+</p>
+    <span><label>Future <br> Registers</label><input type="text" class="input futureregisters" value="0"></span>
+    <p class="symbol">-</p>
+  	<span><label>ADA  &amp; BC <br> Registers</label><input type="text" class="input adabcoptions" disabled="disabled" id="adabcoptions" value="1"></span>
+    <p class="symbol">=</p>
+    <span><label>Registers<br>for Repeat</label><input type="text" class="repeatregisters alert" disabled="disabled"></span>
+    <p class="symbol"></p><!-- space -->
+    <p class="symbol"></p><!-- space -->
+    <span><label>6ft</label><input type="text" class="input sixrepeat dotted" value="0">
+        <div class="togglebtn add-button"> 
+      <div class="switch-field yn-button">
+        <input type="button" id="sixRemove" name="switch_2"/>
+        <label for="sixRemove">-</label>
+        <input type="button" id="sixAdd" name="switch_2"/>
+        <label for="sixAdd">+</label>
+      </div>
+    </div>
+    </span>
+
+    <span><label>5ft</label><input type="text" class="input fiverepeat dotted" value="0">
+    <div class="togglebtn add-button"> 
+      <div class="switch-field yn-button">
+        <input type="button" id="fiveRemove" name="switch_2"/>
+        <label for="fiveRemove">-</label>
+        <input type="button" id="fiveAdd" name="switch_2"/>
+        <label for="fiveAdd">+</label>
+      </div>
+    </div>
+    </span>
+
+
+    <span><label>4ft</label><input type="text" class="input fourrepeat dotted" value="0">
+        <div class="togglebtn add-button"> 
+      <div class="switch-field yn-button">
+        <input type="button" id="fourRemove" name="switch_2"/>
+        <label for="fourRemove">-</label>
+        <input type="button" id="fourAdd" name="switch_2"/>
+        <label for="fourAdd">+</label>
+      </div>
+    </div>
+    </span>
+
+    <span><label>3.5ft</label><input type="text" class="input threerepeat dotted" value="0">
+    <div class="togglebtn add-button"> 
+      <div class="switch-field yn-button">
+        <input type="button" id="threeRemove" name="switch_2"/>
+        <label for="threeRemove">-</label>
+        <input type="button" id="threeAdd" name="switch_2"/>
+        <label for="threeAdd">+</label>
+      </div>
+    </div>
+    </span>
+
+  </div> <!-- end registerarea-->
+  <div class="registerarearight">
+
+
+      <div class="togglebtn choice"> 
+
+<div class="registerarearight-item">
+
+        <form class="form">
+          <div class="switch-field" id="endfiller-switch">
+            <div class="switch-title">Add End Filler Panel</div>
+            <input type="radio" id="endfiller-no" name="switch_2" value="no" checked/>
+            <label for="endfiller-no">No</label>
+            <input type="radio" id="endfiller-yes" name="switch_2" value="yes" />
+            <label for="endfiller-yes">Yes</label>
+          </div> <!-- end endfiller-switch -->
+        </form>
+        <p>(removes blind corner panel)</p>
+</div>
+
+<div class="registerarearight-item">
+        <div class="switch-title">Add Window Close Off</div>
+        <input type="text" class="windowcloseoff" id="windowcloseoff" value="0">
+        </div> 
+    </div><!-- end togglebtn choice -->
+  </div> <!-- end registerarea-->
+
+
+<div id="diagrams">
+  <div id='storenum1'></div>&ensp;Countertop Plan 
+  <div class="diagramarea">
+      <div id="counterlength"></div>
+    <div id="counterlengthbar">
+      <div id="counterlength_a"></div>
+      <div id="counterlength_b"></div>
+    </div><!-- end counterlengthbar-->
+    <br>
+<!--  <div id="print-area-1">  -->
+    <div class="diagram" id="diagram-1">
+           <div id="starter-kit"></div><!--     
+        --><div id="repeatarea"></div><!-- 
+        --><div id="gap"></div><!-- 
+        --><div id="remain"></div><!--         
+        --><div id="ada"></div><!-- Ada Counter
+        --><div id="countergap"><p>Gap</p></div><!-- Counter Gap
+
+        --><div id="bc_a"></div><!-- Balloon Counter A
+        --><div id="bcext"></div><!-- Balloon Counter B
+        --><div id="bc_c"></div><!-- Balloon Counter C
+
+        --><div id="bs"></div><!-- Balloon Service
+        --><div id="bsext"></div><!-- Balloon Service Extension
+        --><div id="designstudio"></div><!-- Design Studio
+        --><div id="counter-end"></div><!-- Dummy Box -->
+    </div><!-- end diagram-->
+<!-- </div> --> 
+  </div><!-- end diagramarea-->
+  <div id='storenum2'></div>&ensp;Lozier Fixture Plan
+  <div class="diagramarea">
+    <div class="diagram" id="diagram-2">
+           <div id="starter-kit-fixture"></div><!--       
+        --><div id="fixturerepeat"></div><!-- 
+        --><div id="remain_fixtures"></div><!--    
+        --><div id="ada_fixtures"></div><!-- 
+        --><div class="loziertext fixtures_gap"><p><!--  4' 4" --></p></div><!--       
+        --><div class="loziertext"><img src="sprites/counter_4fixture.svg" width="48px"><p>4'</p></div><!--       
+        --><div id="bcext_fixtures"></div><!--            
+        --><div class="loziertext"><img src="sprites/counter_4fixture.svg" width="48px"><p>4'</p></div><!--
+        --><div class="loziertext"><img src="sprites/counter_4fixture.svg" width="48px"><p>4'</p></div><!--  
+        --><div class="loziertext"><img src="sprites/counter_4fixture.svg" width="48px"><p>4'</p></div><!--
+        --><div id="bsext_fixtures"></div><!--
+        --><div id="designstudio_fixtures"></div><!--    
+        --><div class="dmy_fixture"></div><!--                          
+        -->
+    </div><!-- end diagram-->
+  </div><!-- end diagramarea-->
+  <div id='storenum3'></div>&ensp;Merchandising Plan
+  <div id="diagramthreecontainer">
+    <div class="parentbox diagramarea" id="diagramthree"></div>
+  </div><!-- end diagramthreecontainer-->
+</div> <!-- end diagrams-->
+
+</div> <!-- end container-->
+
+
+<div id="countertop_parts">
+
+<div class="paper gray-bottom-border">
+        <h1>Counter Order Form</h1>
+        <table id="countertoptable"></table>
+        <h1>Hardware</h1>        
+        <table id="hardwarekittable"></table>
+<!--    <h1>Hardware</h1>        
+        <table id="hardwaretable"></table> -->
+        <!-- Generate PDF Button -->
+        <center><button id="counterpdfbtn" class="btn">Generate PDF</button></center>
+      </div> <!-- end div paper-->
+</div><!-- end Counter Top Parts-->
+
+
+<div id="lozier">
+  
+
+  <div class="paper gray-bottom-border">
+    <h1>Lozier Order Form</h1>
+    <table id="loziertable"></table>
+        <!-- Generate PDF Button -->
+    <center><button id="lozierpdfbtn" class="btn">Generate PDF</button></center>
+  </div><!-- end div paper-->
+</div><!-- end Lozier-->
+
+</body>
+</html>
+
+
+
+
+
+
+
